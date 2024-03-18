@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Kafka name="Kafka" topic="topic">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss} %highlight{%-5p} %message" disableAnsi="false"/>
+            <Property name="bootstrap.servers">localhost:9092</Property>
+        </Kafka>
+        <Async name="Async">
+            <AppenderRef ref="Kafka"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Kafka"/>
+        </Root>
+        <Logger name="org.apache.kafka" level="WARN" />
+    </Loggers>
+</Configuration>
